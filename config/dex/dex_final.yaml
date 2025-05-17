@@ -1,7 +1,7 @@
 issuer: http://localhost:5556
-authorization_endpoint: http://dex:5556/auth
-token_endpoint: http://dex:5556/token
-jwks_uri": http://localhost:5556/keys
+authorization_endpoint: http://localhost:5556/auth
+token_endpoint: http://localhost:5556/token
+jwks_uri: http://localhost:5556/keys
 userinfo_endpoint: http://localhost:5556/userinfo
 device_authorization_endpoint: http://localhost:5556/device/code
 
@@ -16,7 +16,7 @@ staticClients:
   - id: flask-app
     redirectURIs:
       - http://localhost:8000/authorize
-    name: flask_app
+    name: Flask App
     secret: flask-secret
 
 enablePasswordDB: true

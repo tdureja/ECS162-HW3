@@ -1,0 +1,179 @@
+/* NYTimes Font is custom hand written. Chomsky highly resembles it.
+Import the font into the fonts folder and access it via its path.*/
+@font-face{
+    font-family: 'Chomsky';
+    src:url('/assets/Chomsky.otf') format('opentype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+/* styles the logo. centered and large for visual impact */
+h1 {
+    font-family: 'Chomsky', serif;
+    text-align: center;
+    font-size: 48px;
+}
+
+/* horizontal nav bar using flexbox. Menu wraps on smaller displays. Gap creates even spacing between each item */
+.nav-bar{
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 1.5rem;
+    font-size: 0.9rem;
+    border-bottom: 1px solid black;
+    padding-bottom: 10px;
+}
+
+/* create border under nav menu to resemble border on NYTimes website. They have a double border(added elsewhere in this code) */
+.nav-underline{
+    border-bottom: 1px solid black;
+    margin-top: 4px;
+}
+
+/* styles bar containing date block and logo. centers logo and positions date on left. Right empty for symmetry */
+.meta-bar {
+    display: grid;
+    grid-template-columns: 1fr auto 1fr;
+    align-items: center;
+    padding: 10px 20px;
+}
+
+/* stacks date and todays paper */
+.date-block{
+    display: flex;
+    flex-direction: column;
+    font-size: 0.75rem;
+    align-items: flex-start;
+}
+
+/* main article grid layout. Creates 3 columns and puts gap between them for symmetry */
+.content-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 20px;
+    padding: 20px;
+}
+
+
+
+/* set article title font and adjust its size. */
+.article-title{
+    font-family: 'Playfair Display', serif;
+    font-size: 1.4rem;
+    font-weight: 600;
+    line-height: 1.2;
+    margin-top: 0;
+}
+
+/* body text styled for readability. Georgia font is clean, and resembled NyTimes font */
+.article-body{
+    font-family: Georgia, serif;
+    font-size: 0.9rem;
+    line-height: 1.3;
+}
+
+/* switch to 2 column layout for tablets. also removed border from 2nd article in each row, to maintain original desktop look */
+@media(max-width: 1024px){
+    .content-grid{
+        grid-template-columns: repeat(2,1fr);
+    }
+
+    .article:nth-child(2n){
+        border-right: none;        
+    }
+    
+}
+
+/* single column setup for mobile devices. Removed right borders completely */
+@media(max-width: 768px){
+    .content-grid{
+        grid-template-columns: 1fr;
+    }
+    .article{
+        border-right: none;
+        padding: 0;
+    }
+}
+
+/* for desktop setup, remove right border only for the 3rd column. This maintain a more symmetrical look since the 1st articl doesnt have
+a left border */
+@media (min-width: 1025px) {
+    .article:nth-child(3n) {
+      border-right: none;
+    }
+}
+
+/* added a simple footer to make website look more complete/polished */
+.footer {
+    text-align: center;
+    font-size: 0.8rem;
+    color: gray;
+    padding: 20px;
+    border-top: 1px solid gray;
+    margin-top: 40px;
+}
+
+/* Article card styling */
+.section-label {
+    grid-column: 1 / -1;
+    font-size: 1.2rem;
+    font-weight: bold;
+    margin-bottom: 15px;
+    color: #333;
+}
+
+.article-link-wrapper {
+    display: block;
+    text-decoration: none;
+    color: inherit;
+    height: 100%;
+}
+
+.article-link-wrapper:hover {
+    background-color: #f8f8f8;
+}
+
+.article-card {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    padding: 10px;
+    background-color: white;
+    border-bottom: 1px solid gray;
+    border-right: 1px solid gray;
+    margin-bottom: 20px;
+}
+
+.article-image {
+    margin-bottom: 12px;
+    width: 100%;
+    overflow: hidden;
+}
+
+.article-image img {
+    width: 100%;
+    max-height: 200px;
+    object-fit: cover;
+    border-radius: 4px;
+}
+
+
+.article-title {
+    font-size: 18px;
+    margin: 0 0 8px 0;
+    line-height: 1.3;
+}
+
+.article-date {
+    color: #666;
+    font-size: 14px;
+    margin: 0 0 8px 0;
+}
+
+.article-snippet {
+    font-size: 15px;
+    line-height: 1.4;
+    margin: 0;
+    flex-grow: 1;
+}
